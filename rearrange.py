@@ -1,10 +1,6 @@
 """Import necessary packages & modules."""
 import random
 
-# What are some ways we could rearrange words in a sentence?
-# We could access each word & assign it to a random index in a list
-# Add all words in sentence to a list and change their indeces
-
 
 def rearrange():
     """Rearrange words in sentence."""
