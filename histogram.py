@@ -4,7 +4,8 @@
 def histogram(source):
     """Define word frequency for given source text."""
     # Initialize empty dictionary for our histogram
-    histogram = {}
+    placeholder_histogram = {}
+    histogram = []
     # Open our source file with alias source_text
     with open(source) as source_text:
         # Read our source text (turn into string)
@@ -16,10 +17,14 @@ def histogram(source):
         # we're going to increment the frequency val.
         # if not, we create a new key and assign a value one
         for i in text:
-            if i in histogram:
-                histogram[i] += 1
+            if i in placeholder_histogram:
+                placeholder_histogram[i] += 1
             else:
-                histogram[i] = 1
+                placeholder_histogram[i] = 1
+
+        for i in placeholder_histogram.items():
+            hist_list = [i]
+            histogram.append(hist_list)
 
     # return our histogram dictionary
     return histogram
@@ -29,23 +34,19 @@ def unique_words(histogram):
     """Return count of unique words in histogram."""
     # For the dictionary we create in histogram,
     # we're going to count how many unique keys are present
-    count = 0
-    for key in histogram:
-        count += 1
-    return count
+    return len(histogram)
 
 
 def frequency(word, histogram):
     """Define # of time given word appears in histogram."""
     # We're going to find the word key passed in in our dictionary,
     # and then we're going to return the count value of that key
+    frequency = 0
     if word in histogram:
-        frequency = histogram[word]
-    else:
-        frequency = 0
+        frequency = word[1]
     return frequency
 
 
 if __name__ == "__main__":
-    hist = histogram("mimsys-joke.txt")
-    print(hist)
+    freq = frequency("the", histogram("mimsys-joke.txt"))
+    print(freq)
