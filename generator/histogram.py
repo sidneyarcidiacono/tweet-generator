@@ -4,8 +4,7 @@
 def histogram(source):
     """Define word frequency for given source text."""
     # Initialize empty dictionary for our histogram
-    placeholder_histogram = {}
-    histogram = []
+    histogram = {}
     # Open our source file with alias source_text
     with open(source) as source_text:
         # Read our source text (turn into string)
@@ -17,14 +16,10 @@ def histogram(source):
         # we're going to increment the frequency val.
         # if not, we create a new key and assign a value one
         for i in text:
-            if i in placeholder_histogram:
-                placeholder_histogram[i] += 1
+            if i in histogram:
+                histogram[i] += 1
             else:
-                placeholder_histogram[i] = 1
-
-        for i in placeholder_histogram.items():
-            hist_list = [i]
-            histogram.append(hist_list)
+                histogram[i] = 1
 
     # return our histogram dictionary
     return histogram
@@ -34,7 +29,7 @@ def unique_words(histogram):
     """Return count of unique words in histogram."""
     # For the dictionary we create in histogram,
     # we're going to count how many unique keys are present
-    return len(histogram)
+    return len(list(histogram.keys()))
 
 
 def frequency(word, histogram):

@@ -1,5 +1,5 @@
 """Import histogram & Python random library."""
-from histogram import histogram
+from generator.histogram import histogram
 from random import random
 
 hist = histogram("mimsys-joke.txt")
@@ -17,8 +17,9 @@ def weighted_sample_helper(histogram):
     return result
 
 
-def select(histogram, weights):
+def select(histogram, weights, length):
     """Return word sampled based on weight."""
+    sentence = []
     # Initialize words to histogram keys
     words = list(histogram.keys())
     # Initialize values to histogram values
@@ -28,18 +29,25 @@ def select(histogram, weights):
 
     # Probability for each element
     probs = [sum(rel_weight[: i + 1]) for i in range(len(rel_weight))]
+    print(f"probs: {probs}")
 
     # Create a random "slot" to select from
     slot = random()
+    print(f" Slot: {slot}")
     # enumberate through words, considering probs
     # if the slot # generated is less than the item with probs,
     # break from the loop
     for (i, element) in enumerate(words):
+        print(f"element: {element}")
         if slot <= probs[i]:
+            print(f"slot from if check {slot}")
             break
 
-    # return element (word selected)
-    return element
+        if len(sentence) < length:
+            sentence.append(element)
+
+    # return sentence as a string
+    return " ".join(sentence)
 
 
 if __name__ == "__main__":

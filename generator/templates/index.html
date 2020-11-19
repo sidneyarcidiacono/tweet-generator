@@ -5,6 +5,14 @@
     <title>Tweet Generator</title>
   </head>
   <body>
-    <h2>{{ sentence }}</h2>
+    {% if sentence %}
+      <h2>{{ sentence }}</h2>
+    {% else %}
+    <form action="{{ url_for('main.sentence') }}" method="POST">
+      <label for="length">How many words should I generate?</label>
+      <input type="number" name="length" id="length">
+      <input type="submit" name="submit" value="Submit">
+    </form>
+    {% endif %}
   </body>
 </html>
