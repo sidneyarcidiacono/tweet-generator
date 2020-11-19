@@ -47,5 +47,5 @@ def frequency(word, histogram):
 
 
 if __name__ == "__main__":
-    freq = frequency("nuts", histogram("mimsys-joke.txt"))
-    print(freq)
+    hist = histogram("mimsys-joke.txt")
+    print(hist)
