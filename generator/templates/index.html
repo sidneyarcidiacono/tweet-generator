@@ -7,6 +7,7 @@
   <body>
     {% if sentence %}
       <h2>{{ sentence }}</h2>
+      <button type="button" name="refresh" onclick="window.location.reload()">Another?</button>
     {% else %}
     <form action="{{ url_for('main.sentence') }}" method="POST">
       <label for="length">How many words should I generate?</label>

@@ -29,17 +29,14 @@ def select(histogram, weights, length):
 
     # Probability for each element
     probs = [sum(rel_weight[: i + 1]) for i in range(len(rel_weight))]
-    print(f"probs: {probs}")
 
     # Create a random "slot" to select from
     slot = random()
-    print(f" Slot: {slot}")
     # enumberate through words, considering probs
     # if the slot # generated is less than the item with probs,
     # break from the loop
     for (i, element) in enumerate(words):
         if slot <= probs[i]:
-            print(f"element {element}")
             if len(sentence) < length:
                 sentence.append(element)
             if len(sentence) >= length:
