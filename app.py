@@ -1,6 +1,6 @@
 """Package & module import."""
-from flask import Flask, render_template
-from dictionary_words import words_list, make_sentence
+from flask import Flask, render_template, url_for
+from generator.dictionary_words import make_sentence
 
 app = Flask(__name__)
 
