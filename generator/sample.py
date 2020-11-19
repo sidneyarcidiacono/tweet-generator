@@ -38,13 +38,12 @@ def select(histogram, weights, length):
     # if the slot # generated is less than the item with probs,
     # break from the loop
     for (i, element) in enumerate(words):
-        print(f"element: {element}")
         if slot <= probs[i]:
-            print(f"slot from if check {slot}")
-            break
-
-        if len(sentence) < length:
-            sentence.append(element)
+            print(f"element {element}")
+            if len(sentence) < length:
+                sentence.append(element)
+            if len(sentence) >= length:
+                break
 
     # return sentence as a string
     return " ".join(sentence)
