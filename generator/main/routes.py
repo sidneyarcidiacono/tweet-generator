@@ -10,8 +10,3 @@ def sentence():
     """Return random generated sentence."""
     sentence = make_sentence("mimsys-joke.txt")
     return render_template("index.html", sentence=sentence)
-
-
-@main.route("/tweet")
-def tweet():
-    pass
