@@ -1,6 +1,7 @@
 """Package & module import."""
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 from generator.sample import select, hist, weighted_sample_helper
+from generator import db
 
 main = Blueprint("main", __name__)
 
@@ -15,16 +16,18 @@ def sentence():
     return render_template("index.html")
 
 
-@main.route("/add-favorite/<sentence>", methods=["POST"])
-def add_favorite(sentence):
+@main.route("/add-favorite", methods=["POST"])
+def add_favorite():
     """Add sentence to favorites when user clicks like button."""
-    pass
+    favorite_sentence = request.form.get("sentence")
+    new_fav = {"sentence": favorite_sentence}
+    db.favorites.insert_one(new_fav)
+    return redirect(url_for("main.sentence"))
 
 
 @main.route("/favorites")
 def favorites():
     """Show favorited sentences to users."""
-
-    # TODO: include logic to query all favorited
-    # sentences from database, pass to template
-    pass
+    favorites = list(db.favorites.find())
+    context = {"favorites": favorites}
+    return render_template("favorites.html", **context)

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section>
+  {% if favorites %}
+    {% for favorite in favorites %}
+      <p>{{ favorite.sentence }}</p>
+    {% endfor %}
+  {% else %}
+    <h3>No favorited sentences yet!</h3>
+  {% endif %}
+</section>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tweet Generator</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='favorite.js')}}" defer></script>
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="{{ url_for('main.sentence') }}">Home</a>
+        <a href="{{ url_for('main.favorites') }}">Favorites</a>
+      </nav>
+    </header>
+    {% block content %}{% endblock %}
+    <footer>© Copyright Sid Arcidiacono 2020</footer>
+  </body>
+</html>
