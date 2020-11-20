@@ -1,5 +1,5 @@
 """Import histogram & Python random library."""
-from generator.histogram import histogram
+from generator.cleanup.histogram import histogram
 from random import random
 
 hist = histogram("mimsys-joke.txt")

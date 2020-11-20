@@ -1,6 +1,6 @@
 """Package & module import."""
 from flask import Blueprint, render_template, request, redirect, url_for
-from generator.sample import select, hist, weighted_sample_helper
+from generator.main.utils import select, hist, weighted_sample_helper
 from generator import db
 
 main = Blueprint("main", __name__)
